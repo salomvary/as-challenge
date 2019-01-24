@@ -1,9 +1,13 @@
+const baseUrl = 'https://jsonplaceholder.typicode.com'
+
 const app = new Vue({
   el: '#app',
+
   data: {
     message: null,
     user: null
   },
+
   methods: {
     async fetchUser () {
       this.message = 'Fetching user...'
@@ -16,6 +20,7 @@ const app = new Vue({
       }
     }
   },
+
   async created () {
     this.fetchUser()
   }
@@ -23,8 +28,8 @@ const app = new Vue({
 
 async function fetchUser (userId) {
   const [profile, posts] = await Promise.all([
-    fetchJSON(`https://jsonplaceholder.typicode.com/users/${encodeURIComponent(userId)}`),
-    fetchJSON(`https://jsonplaceholder.typicode.com/posts?userId=${encodeURIComponent(userId)}`)
+    fetchJSON(`${baseUrl}/users/${encodeURIComponent(userId)}`),
+    fetchJSON(`${baseUrl}/posts?userId=${encodeURIComponent(userId)}`)
   ])
   return { profile, posts }
 }
