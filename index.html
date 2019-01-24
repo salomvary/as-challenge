@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>AS Challengr</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ message }}<p>
+      <div v-if="user">
+        <h2>User Profile</h2>
+        <ul>
+          <li>Name: {{user.profile.name}}</li>
+          <li>Email: {{user.profile.email}}</li>
+        </ul>
+        <h2>Posts</h2>
+        <ul v-for="post in user.posts">
+          <li>
+            <h3>{{post.title}}</h3>
+            <p>{{post.body}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.22/vue.js"></script>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
