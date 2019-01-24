@@ -34,7 +34,10 @@
       <user v-if="user" :user="user"></user>
     </div>
 
+    <!-- It would be nice to `import` vue.js from the CDN as an ES6 module but it is not served in
+    a browser-friendly way (the ES6 bundle assumes Node.js environment). -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.22/vue.js"></script>
+    <!-- Use ES6 modules  -->
     <script type="module" src="index.js"></script>
   </body>
 </html>
