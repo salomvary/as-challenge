@@ -1,7 +1,12 @@
-const baseUrl = 'https://jsonplaceholder.typicode.com'
+import fetchUser from './fetch-user.js'
+import User from './user.js'
 
 const app = new Vue({
   el: '#app',
+
+  components: {
+    User
+  },
 
   data: {
     message: null,
@@ -29,36 +34,7 @@ const app = new Vue({
    * @see https://vuejs.org/v2/api/#created
    */
   async created () {
+    // Fetch user immediately on initialization
     this.fetchUser()
   }
 })
-
-/**
- * Fetch user by id from the API
- *
- * @param {string|number} userId
- * @returns {object} the user object
- */
-async function fetchUser (userId) {
-  const [profile, posts] = await Promise.all([
-    fetchJSON(`${baseUrl}/users/${encodeURIComponent(userId)}`),
-    fetchJSON(`${baseUrl}/posts?userId=${encodeURIComponent(userId)}`)
-  ])
-  // Merge the user profile data and posts
-  return { profile, posts }
-}
-
-/**
- * Fetch URL and parse a successful response as JSON
- *
- * @param {string} url
- * @returns {object} the parsed response
- */
-async function fetchJSON (url) {
-  const response = await fetch(url)
-  if (response.ok) {
-    return response.json()
-  } else {
-    return Promise.reject()
-  }
-}

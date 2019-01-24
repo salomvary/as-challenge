@@ -5,9 +5,9 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <div id="app">
-      <p>{{ message }}<p>
-      <div v-if="user">
+    <!-- User template -->
+    <template id="user" type="x-template">
+      <section>
         <h2>User Profile</h2>
         <ul>
           <li>Name: {{user.profile.name}}</li>
@@ -20,8 +20,15 @@
             <p>{{post.body}}
           </li>
         </ul>
-      </div>
+      </section>
+    </template>
+
+    <!-- Vue app entry point -->
+    <div id="app">
+      <p v-if="message">{{ message }}<p>
+      <user v-if="user" :user="user"></user>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.22/vue.js"></script>
     <script type="module" src="index.js"></script>
   </body>
