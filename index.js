@@ -11,6 +11,7 @@ const app = new Vue({
         this.user = await fetchUser(1)
         this.message = null
       } catch (e) {
+        console.error('Failed to fetch user', e)
         this.message = 'Failed to fetch user :('
       }
     }
