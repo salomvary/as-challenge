@@ -7,6 +7,8 @@ const baseUrl = 'https://jsonplaceholder.typicode.com'
  * @returns {object} the user object
  */
 export default async function fetchUser (userId) {
+  // As an improvement, we could also handle the case when one (and only one) of user or
+  // the user posts fail to fetch and still return a partial result.
   const [profile, posts] = await Promise.all([
     fetchJSON(`${baseUrl}/users/${encodeURIComponent(userId)}`),
     fetchJSON(`${baseUrl}/posts?userId=${encodeURIComponent(userId)}`)

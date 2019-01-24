@@ -35,6 +35,9 @@ const app = new Vue({
    */
   async created () {
     // Fetch user immediately on initialization
+    // As an improvement (depends also on product requirements) we could fetch and
+    // render the user profile and the posts separately. For simplicity they are fetched
+    // in one call (requests still happen in parallel).
     this.fetchUser()
   }
 })
