@@ -3,6 +3,11 @@
   <head>
     <title>AS Challenge</title>
     <meta charset="utf-8">
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <!-- User template -->
@@ -24,7 +29,7 @@
     </template>
 
     <!-- Vue app entry point -->
-    <div id="app">
+    <div id="app" v-cloak>
       <p v-if="message">{{ message }}<p>
       <user v-if="user" :user="user"></user>
     </div>
